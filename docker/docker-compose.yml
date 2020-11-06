@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  papermerge:
+    image: maspiter/papermerge-linuxserver
+    container_name: papermerge
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Brussels
+    volumes:
+    # adjust the following 3 lines with the correct paths
+      - /path/to/docker/folder/papermerge/config:/config
+      - /path/to/docker/folder/papermerge/data:/data
+      - /path/to/share:/opt/import
+    ports:
+      - 8000:8000
+    restart: unless-stopped
